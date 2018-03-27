@@ -89,17 +89,19 @@ macro c_insertHeader()//alt+c
 	porjname = GetProjName(pbuf);
 
 	szTime  = GetSysTime(1);
-	data = szTime.date;
-	time = szTime.time;
+	year = szTime.year
+	month = szTime.month
+	day = szTime.day
+	time = szTime.time
 
 	InsBufLine(hbuf, 0,  "/**")
 	InsBufLine(hbuf, 1,  "  ********************************************************************************")
 	InsBufLine(hbuf, 2,  "  * @@File Name    : @filename@")
 	InsBufLine(hbuf, 3,  "  * @@Author       : Jungle")
 	InsBufLine(hbuf, 4,  "  * @@Mail         : Mail")
-	InsBufLine(hbuf, 5,  "  * @@Created Time : @data@ @time@")
+	InsBufLine(hbuf, 5,  "  * @@Created Time : @year@/@month@/@day@ @time@")
 	InsBufLine(hbuf, 6,  "  * @@Version      : V1.0")
-	InsBufLine(hbuf, 7,  "  * @@Last Changed : @data@ @time@")
+	InsBufLine(hbuf, 7,  "  * @@Last Changed : @year@/@month@/@day@ @time@")
 	InsBufLine(hbuf, 8,  "  * @@Brief        : brief")
 	InsBufLine(hbuf, 9,  "  ********************************************************************************")
 	InsBufLine(hbuf, 10, "  */")
@@ -141,17 +143,19 @@ macro h_insertHeader()//alt+h
 	HEADER = toupper(strtrunc(filename, cch - 2));
 
 	szTime  = GetSysTime(1);
-	data = szTime.date;
-	time = szTime.time;
+	year = szTime.year
+	month = szTime.month
+	day = szTime.day
+	time = szTime.time
 
 	InsBufLine(hbuf, 0,  "/**")
 	InsBufLine(hbuf, 1,  "  ********************************************************************************")
 	InsBufLine(hbuf, 2,  "  * @@File Name    : @filename@")
 	InsBufLine(hbuf, 3,  "  * @@Author       : Jungle")
 	InsBufLine(hbuf, 4,  "  * @@Mail         : Mail")
-	InsBufLine(hbuf, 5,  "  * @@Created Time : @data@ @time@")
+	InsBufLine(hbuf, 5,  "  * @@Created Time : @year@/@month@/@day@ @time@")
 	InsBufLine(hbuf, 6,  "  * @@Version      : V1.0")
-	InsBufLine(hbuf, 7,  "  * @@Last Changed : @data@ @time@")
+	InsBufLine(hbuf, 7,  "  * @@Last Changed : @year@/@month@/@day@ @time@")
 	InsBufLine(hbuf, 8,  "  * @@Brief        : brief")
 	InsBufLine(hbuf, 9,  "  ********************************************************************************")
 	InsBufLine(hbuf, 10, "  */")
@@ -180,10 +184,12 @@ macro s_saveFileUpdateLastChangeTime()//alt+s
 
 	if(strmid(szS, 0, 20) == "  * @@Last Changed : ") {
 		szTime  = GetSysTime(1)
-		data = szTime.date
+		year = szTime.year
+		month = szTime.month
+		day = szTime.day
 		time = szTime.time
 
-		PutBufLine(hbuf, 7,  "  * @@Last Changed : @data@ @time@")
+		PutBufLine(hbuf, 7,  "  * @@Last Changed : @year@/@month@/@day@ @time@")
 	}
 
 	SaveBuf(hbuf);
